@@ -50,6 +50,16 @@
     t.textContent = 'เชื่อมบัญชีเรียบร้อยแล้ว';
     b.textContent = (n ? 'ขอบคุณ ' + n + ' ' : 'ขอบคุณ ') + 'ที่เชื่อมบัญชี TikTok กับ Twentywendy KOL ท่านสามารถปิดหน้านี้ได้ และยกเลิกการเชื่อมได้ทุกเมื่อในแอป TikTok ที่เมนูการตั้งค่าและความเป็นส่วนตัว หัวข้อสิทธิ์ของแอป';
     en.textContent = 'Your TikTok account is now connected. You may close this page. You can disconnect at any time in the TikTok app under Settings and privacy › App permissions.';
+  } else if (s === 'pending') {
+    icon.className = 'icon ok'; icon.textContent = '✓';
+    t.textContent = 'ส่งคำขอเรียบร้อยแล้ว';
+    b.textContent = (n ? 'ขอบคุณ ' + n + ' ' : 'ขอบคุณ ') + 'ที่สนใจร่วมงานกับ Twentywendy ทีมงานจะพิจารณาช่องของท่าน และติดต่อกลับทางข้อความ (Direct Message) ใน TikTok ท่านสามารถปิดหน้านี้ได้ และยกเลิกการเชื่อมได้ทุกเมื่อในแอป TikTok ที่เมนูการตั้งค่าและความเป็นส่วนตัว หัวข้อสิทธิ์ของแอป';
+    en.textContent = 'Thank you for your interest in working with Twentywendy. Our team will review your channel and reach out via TikTok direct message. You may close this page and can disconnect at any time in the TikTok app under Settings and privacy › App permissions.';
+  } else if (s === 'closed') {
+    icon.className = 'icon warn'; icon.textContent = '!';
+    t.textContent = 'ปิดรับคำขอชั่วคราว';
+    b.textContent = 'ขณะนี้บริษัทฯ ปิดรับคำขอร่วมงานผ่านลิงก์นี้ชั่วคราว หากต้องการติดต่อ กรุณาติดต่อทีมงานตามช่องทางด้านล่าง';
+    en.textContent = 'We are not accepting new requests through this link at the moment. Please contact our team using the details below.';
   } else if (s === 'denied') {
     icon.className = 'icon warn'; icon.textContent = '!';
     t.textContent = 'ยังไม่ได้เชื่อมบัญชี';
