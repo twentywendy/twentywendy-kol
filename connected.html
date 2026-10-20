@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>ผลการเชื่อมบัญชี — Twentywendy KOL</title>
+<style>
+  :root{--bg:#F8F5F6;--paper:#fff;--ink:#2A2326;--mute:#6A6166;--line:#ECE3E7;--accent:#A34D62;--soft:#FBF4F6;--ok:#2E7D5B;--warn:#B26A00}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.8 "Sarabun","Noto Sans Thai",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+  main{max-width:560px;margin:0 auto;padding:32px 16px 64px}
+  .doc{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:36px 32px;margin-bottom:16px;text-align:center}
+  @media(max-width:600px){.doc{padding:28px 20px}}
+  .co{font-size:13px;color:var(--mute);border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:22px}
+  .co b{color:var(--ink);font-size:14px}
+  .icon{width:56px;height:56px;border-radius:50%;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:700;color:#fff}
+  .icon.ok{background:var(--ok)} .icon.warn{background:var(--warn)}
+  h1{font-size:21px;margin:0 0 8px;line-height:1.5}
+  p{margin:8px 0}
+  .en{font-size:13.5px;color:var(--mute);border-top:1px solid var(--line);margin-top:18px;padding-top:12px}
+  a{color:var(--accent)} footer{text-align:center;font-size:13px;color:var(--mute)}
+</style>
+</head>
+<body>
+<main>
+<article class="doc">
+  <div class="co"><b>บริษัท ทเวนตี้เวนดี้ จำกัด</b> · Twentywendy KOL</div>
+  <div class="icon" id="icon"></div>
+  <h1 id="title"></h1>
+  <p id="body"></p>
+  <p class="en" id="en"></p>
+</article>
+<footer>โทร 080-949-2949 · <a href="mailto:Twentywendy@twentywendy.com">Twentywendy@twentywendy.com</a> · LINE @TWENTYWENDY<br><a href="privacy.html">นโยบายความเป็นส่วนตัว</a> · <a href="terms.html">ข้อตกลงการใช้บริการ</a></footer>
+</main>
+<script>
+(function () {
+  var q = new URLSearchParams(location.search);
+  var s = q.get('s') || '', r = q.get('r') || '', n = (q.get('n') || '').slice(0, 60);
+  var ERR = {
+    link:    ['ลิงก์นี้ใช้งานไม่ได้', 'ลิงก์อาจไม่ถูกต้องหรือถูกยกเลิกแล้ว กรุณาติดต่อทีมงานเพื่อขอลิงก์ใหม่', 'This link is invalid or no longer active. Please contact our team for a new link.'],
+    expired: ['หมดเวลาการเชื่อมบัญชี', 'กรุณาเปิดลิงก์ที่ได้รับจากทีมงานอีกครั้ง แล้วกดเชื่อมบัญชีใหม่', 'The session has expired. Please open the link from our team again and reconnect.'],
+    owned:   ['บัญชีนี้เชื่อมกับครีเอเตอร์รายอื่นแล้ว', 'บัญชี TikTok นี้เชื่อมอยู่กับรายชื่อครีเอเตอร์อื่นในระบบ กรุณาติดต่อทีมงานเพื่อตรวจสอบ', 'This TikTok account is already connected to another creator profile. Please contact our team.'],
+    handle:  ['ชื่อผู้ใช้นี้มีอยู่ในระบบแล้ว', 'ชื่อผู้ใช้ TikTok นี้บันทึกอยู่กับรายชื่อครีเอเตอร์อื่น กรุณาติดต่อทีมงานเพื่อตรวจสอบ', 'This TikTok username is registered to another creator profile. Please contact our team.'],
+    def:     ['ระบบขัดข้องชั่วคราว', 'กรุณาลองเปิดลิงก์อีกครั้งในภายหลัง หากยังไม่สำเร็จ กรุณาติดต่อทีมงาน', 'Something went wrong. Please try again later or contact our team.']
+  };
+  var icon = document.getElementById('icon'), t = document.getElementById('title'), b = document.getElementById('body'), en = document.getElementById('en');
+  if (s === 'ok') {
+    icon.className = 'icon ok'; icon.textContent = '✓';
+    t.textContent = 'เชื่อมบัญชีเรียบร้อยแล้ว';
+    b.textContent = (n ? 'ขอบคุณ ' + n + ' ' : 'ขอบคุณ ') + 'ที่เชื่อมบัญชี TikTok กับ Twentywendy KOL ท่านสามารถปิดหน้านี้ได้ และยกเลิกการเชื่อมได้ทุกเมื่อในแอป TikTok ที่เมนูการตั้งค่าและความเป็นส่วนตัว หัวข้อสิทธิ์ของแอป';
+    en.textContent = 'Your TikTok account is now connected. You may close this page. You can disconnect at any time in the TikTok app under Settings and privacy › App permissions.';
+  } else if (s === 'denied') {
+    icon.className = 'icon warn'; icon.textContent = '!';
+    t.textContent = 'ยังไม่ได้เชื่อมบัญชี';
+    b.textContent = 'ท่านเลือกไม่อนุญาตบนหน้าของ TikTok หากต้องการเชื่อมบัญชีภายหลัง สามารถเปิดลิงก์เดิมได้อีกครั้ง';
+    en.textContent = 'You chose not to authorize. If you would like to connect later, simply open the same link again.';
+  } else {
+    var m = ERR[r] || ERR.def;
+    icon.className = 'icon warn'; icon.textContent = '!';
+    t.textContent = m[0]; b.textContent = m[1]; en.textContent = m[2];
+  }
+})();
+</script>
+</body>
+</html>
